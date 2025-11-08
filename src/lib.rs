@@ -73,6 +73,9 @@ cfg_if::cfg_if! {
     } else if #[cfg(any(target_os = "linux", target_os = "android"))] {
         mod linux;
         use linux as sys;
+    } else if #[cfg(target_os = "redox")] {
+        mod redox;
+        use redox as sys;
     } else if #[cfg(all(windows, feature = "win10plus"))] {
         mod win10;
         use win10 as sys;
